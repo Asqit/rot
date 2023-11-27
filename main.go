@@ -16,22 +16,17 @@ import (
 	"strings"
 )
 
-
-
-
 func getEnglishAlphabet() map[rune]int {
 	var alphabet = make(map[rune]int, 25)
 	var decASCII int = 65
 
-	for i := 1; i <= 26;i++ {
+	for i := 1; i <= 26; i++ {
 		alphabet[rune(decASCII)] = i
-		decASCII += 1;
+		decASCII += 1
 	}
- 
+
 	return alphabet
 }
-
-
 
 func Encode(payload string, shift int) string {
 	alphabet := getEnglishAlphabet()
@@ -44,21 +39,18 @@ func Encode(payload string, shift int) string {
 			fmt.Printf("warning: incompatible character %c with alphabet\n", value)
 			continue
 		}
-		
-	
-		if index + shift > 26 {
+
+		if index+shift > 26 {
 			amount := (index + shift) - 26
 			runeStr[i] = 64 + rune(amount)
-			continue	
+			continue
 		}
-
 
 		runeStr[i] += rune(shift)
 	}
 
 	return string(runeStr)
 }
-
 
 func Decode(payload string, shift int) string {
 	alphabet := getEnglishAlphabet()
@@ -75,7 +67,7 @@ func Decode(payload string, shift int) string {
 		amount := index - shift
 
 		if amount < 0 {
-			str[i] = rune(90 - amount * -1)
+			str[i] = rune(90 - amount*-1)
 			continue
 		}
 
