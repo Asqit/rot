@@ -1,14 +1,7 @@
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-
-//
-//	ROT
-//	Author: Ondřej Tuček (ondrejtucek9@gmail.com)				27.11.2023
-//
-// -----------------------------------------------------------------------
-//
-//	Desc. ROT is ciphering algorithm that is based on the caesar cipher
-//	This program allows you to decode and encode payload in ROT.
-//
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-
+// ROT
+// Author: Ondřej Tuček (ondrejtucek9@gmail.com)				27.11.2023
+// Description: ROT is ciphering algorithm that is based on the caesar cipher
+// This program allows you to decode and encode payload in ROT.
 package rot
 
 import (
@@ -28,6 +21,7 @@ func getEnglishAlphabet() map[rune]int {
 	return alphabet
 }
 
+// A function for turning your 'payload' into ROT-'shift' cipher
 func Encode(payload string, shift int) string {
 	alphabet := getEnglishAlphabet()
 	runeStr := []rune(strings.ToUpper(payload))
@@ -52,6 +46,8 @@ func Encode(payload string, shift int) string {
 	return string(runeStr)
 }
 
+// A function for turning the cipher back to original
+// by shifting the amount of letters in reverse order
 func Decode(payload string, shift int) string {
 	alphabet := getEnglishAlphabet()
 	str := []rune(strings.ToUpper(payload))
